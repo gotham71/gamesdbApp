@@ -1,5 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+
+//Services
+import { GamesdbService } from './services/gamesdb.service';
+
+//Pipes
+import { NoPicPipe } from './pipes/nopic.pipe';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
 
 //Routes
 import { APP_ROUTING } from './app.routes';
@@ -21,14 +30,18 @@ import { PlatformComponent } from './components/platform/platform.component';
     GameListComponent,
     PlatformListComponent,
     GameComponent,
-    PlatformComponent
+    PlatformComponent,
+    NoPicPipe,
+    DomseguroPipe
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    HttpClientModule,
     APP_ROUTING
   ],
   providers: [
-    
+    GamesdbService
   ],
   bootstrap: [AppComponent]
 })

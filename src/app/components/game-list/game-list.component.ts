@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GamesdbService } from '../../services/gamesdb.service';
 
 @Component({
   selector: 'app-game-list',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameListComponent implements OnInit {
 
-  constructor() { }
+  games: any;
+
+  constructor(private _gamesdbservice: GamesdbService) { 
+    this._gamesdbservice.getGames().subscribe(response => { this.games = response; console.log(response); });
+  }
 
   ngOnInit() {
+    
   }
+  
 
 }

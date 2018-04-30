@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+//Service
+import { GamesdbService } from '../../services/gamesdb.service';
+
+
 @Component({
   selector: 'app-platform-list',
   templateUrl: './platform-list.component.html',
@@ -7,7 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlatformListComponent implements OnInit {
 
-  constructor() { }
+  platforms: any;
+
+  constructor(private _gamesdbservice: GamesdbService) {
+    this._gamesdbservice.getPlatforms().subscribe(response => { this.platforms = response;});
+  }
 
   ngOnInit() {
   }

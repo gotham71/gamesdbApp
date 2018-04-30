@@ -1,3 +1,7 @@
-<p>
-  game works!
-</p>
+  {{game.name}}<br/>
+  {{game.summary}}<br/>
+  <div *ngFor="let screenshot of screenshotsGame">
+     
+    <img [src]="screenshot.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_logo_med/'" />
+  </div> 
+
