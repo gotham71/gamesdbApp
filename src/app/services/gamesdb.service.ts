@@ -42,6 +42,14 @@ export class GamesdbService {
     return this.http.get(url, { headers }).map(res => res);
   }
 
+  public getPlatformsIdGame(id: string) {
+    let headers = this.getHeaders();
+    let url = `${this.urlGameDb}/games/${id}/?fields=platforms`;
+
+    return this.http.get(url, { headers }).map(res => res);
+  }
+
+
   public getPlatforms() {
     
     let headers = this.getHeaders();

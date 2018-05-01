@@ -9,8 +9,9 @@ export class DomseguroPipe implements PipeTransform {
 
   constructor( private domSanitizer:DomSanitizer ){ }
 
-  transform( value: string, url: string): any {
-    return this.domSanitizer.bypassSecurityTrustResourceUrl( url + value + '.jpg' );
+  transform( value: string, url: string, size: string): any {
+    
+    return this.domSanitizer.bypassSecurityTrustResourceUrl( url + size + '/' + value + '.jpg' );
   }
 
 }

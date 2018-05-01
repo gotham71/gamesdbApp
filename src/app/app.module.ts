@@ -10,6 +10,7 @@ import { GamesdbService } from './services/gamesdb.service';
 import { NoPicPipe } from './pipes/nopic.pipe';
 import { DomseguroPipe } from './pipes/domseguro.pipe';
 
+
 //Routes
 import { APP_ROUTING } from './app.routes';
 

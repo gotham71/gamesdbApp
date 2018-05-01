@@ -1,7 +1,14 @@
   {{game.name}}<br/>
   {{game.summary}}<br/>
+  {{game.first_release_date | date:'dd MMMM yyyy'}}<br/>
+  {{game.cover.cloudinary_id}}<br/><br/>
+  {{game.hypes}}<br/><br/>
+  <div *ngFor="let platform of platformsGame">
+    <h5>{{platform}}</h5>
+  </div>
+  <img [src]="game.cover['cloudinary_id'] | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="img-fluid" style="border-radius: 8px; margin: 10px 0;"/>
+  <br/><br/>
   <div *ngFor="let screenshot of screenshotsGame">
-     
-    <img [src]="screenshot.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_logo_med/'" />
+    <img [src]="screenshot.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="img-fluid" style="border-radius: 8px; margin: 10px 0;"/>
   </div> 
 
