@@ -1,14 +1,41 @@
-  {{game.name}}<br/>
-  {{game.summary}}<br/>
-  {{game.first_release_date | date:'dd MMMM yyyy'}}<br/>
-  {{game.cover.cloudinary_id}}<br/><br/>
-  {{game.hypes}}<br/><br/>
-  <div *ngFor="let platform of platformsGame">
-    <h5>{{platform}}</h5>
+  <div class="position: relative">
+    <div class="blurryScreenshotGameGb" style="background: url('https://www.planwallpaper.com/static/images/blue_ocean-dsc00251-1080p.jpg'); background-position: center center;">
+    </div>
+     <div class="container screenshotGameGb" style="background: url('https://www.planwallpaper.com/static/images/blue_ocean-dsc00251-1080p.jpg'); background-position: center center;">
+      <div class="row">
+        <div class="col-md-3 text-center" style="max-height: 340px;">
+          <img [src]="game.cover['cloudinary_id'] | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="img-fluid" style="height: 100%;"/>
+        </div>
+        <div class="col-md-9"></div>
+      </div>
+    </div>
   </div>
-  <img [src]="game.cover['cloudinary_id'] | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="img-fluid" style="border-radius: 8px; margin: 10px 0;"/>
-  <br/><br/>
-  <div *ngFor="let screenshot of screenshotsGame">
-    <img [src]="screenshot.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="img-fluid" style="border-radius: 8px; margin: 10px 0;"/>
-  </div> 
+  
+  <div>
+  </div>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-3" style="padding: 20px 20px 0 20px;">
+        <h5>{{game.first_release_date | date:'dd MMMM yyyy'}}</h5>
+        <hr>
+        <div *ngFor="let platform of platformsNameGame">
+          <h6>{{platform.name}}</h6>
+        </div>
+      </div>
+      <div class="col-md-9" style="padding: 20px 0 0 0;">
+          <img [src]="game.cover['cloudinary_id'] | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="coverSmall rounded-circle" style="display: inline-block;">
+          <h1 style="display: inline-block;">{{game.name}}</h1>    
+          <p>{{game.summary}}</p>
+          <div *ngFor="let screenshot of screenshotsGame">
+            <img [src]="screenshot.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'1080p'" class="img-fluid" style="border-radius: 8px; margin: 10px 0;"/>
+          </div>
+      </div>
+    </div>
+    <!-- <img [src]="screenshotGameBg.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'1080p'" class="img-fluid"/> -->
+    
+    
+    
+    <br/><br/>
+  </div>
 

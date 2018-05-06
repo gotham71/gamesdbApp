@@ -8,7 +8,7 @@
 
 body {
     /* font-family: 'Montserrat', sans-serif!important; */
-    /* font-family: 'Open Sans', sans-serif!important; */
+    font-family: 'Open Sans', sans-serif!important;
     font-size: 18px!important;
     font-weight: 400!important;
 } 
@@ -21,7 +21,7 @@ body {
 /* Center Navbar */
 
 .mainContainer {
-    margin: 20px 0 0 0;
+    margin: 0 0 0 0;
 }
 
 li.nav-item {
@@ -34,6 +34,34 @@ li.nav-item:last-child {
     border-left: 1px dotted white;
     letter-spacing: 3px;
     padding: 0 0 0 30px;
+}
+
+/*screenshotGameGb */
+
+.blurryScreenshotGameGb {
+    height: 340px; 
+    -webkit-filter: grayscale(95%);
+    -moz-filter: grayscale(95%);
+    -o-filter: grayscale(95%);
+    -ms-filter: grayscale(95%);
+    filter: grayscale(95%);
+}
+
+.screenshotGameGb {
+    height: 340px; 
+    position: absolute;
+    width: 100%;
+    top: 90px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.coverSmall {
+    display: inline-block;
+    object-fit: cover;
+    width: 65px;
+    height: 65px;
+    margin: 0 20px 20px 20px;
 }
 
 
