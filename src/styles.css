@@ -41,13 +41,49 @@ li.nav-item:last-child {
 
 /*screenshotGameGb */
 
+
 .blurryScreenshotGameGb {
-    height: 340px; 
-    -webkit-filter: grayscale(95%);
-    -moz-filter: grayscale(95%);
-    -o-filter: grayscale(95%);
-    -ms-filter: grayscale(95%);
-    filter: grayscale(95%);
+    -webkit-filter: blur(4px) grayscale(65%);
+    -moz-filter: blur(4px) grayscale(65%);
+    -o-filter: blur(4px) grayscale(65%);
+    -ms-filter: blur(4px) grayscale(65%);
+    filter: blur(4px) grayscale(65%);
+}
+
+.containerScreenshotGameGb {
+    position: relative; 
+    overflow: hidden; 
+    width: 100%; 
+    height: 340px;
+}
+
+.containerScreenshotGameGb img {
+  position: absolute;
+  top: -9999px;
+  right: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  margin: auto;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
+.containerScreenshotGameGbColor {
+    position: relative; 
+    overflow: hidden; 
+    width: 100%; 
+    height: 340px;
+}
+.containerScreenshotGameGbColor img {
+  position: absolute;
+  top: -9999px;
+  right: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  margin: auto;
+  min-width: 100%;
+  min-height: 100%;   
 }
 
 .screenshotGameGb {
@@ -59,6 +95,16 @@ li.nav-item:last-child {
     transform: translate(-50%, 0);
 }
 
+.coverBig {
+    bottom: 0!important;
+    left: 15px!important;
+    right: 0!important;
+    top: 0!important;
+    z-index: 1;
+    margin: 0!important;
+    min-width: 0!important;
+    min-height: 0!important;
+}
 .coverSmall {
     display: inline-block;
     object-fit: cover;

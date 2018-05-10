@@ -1,4 +1,4 @@
-  <div class="position: relative">
+  <!-- <div class="position: relative">
     <div class="blurryScreenshotGameGb" style="background: url('https://www.planwallpaper.com/static/images/blue_ocean-dsc00251-1080p.jpg'); background-position: center center;">
     </div>
      <div class="container screenshotGameGb" style="background: url('https://www.planwallpaper.com/static/images/blue_ocean-dsc00251-1080p.jpg'); background-position: center center;">
@@ -9,12 +9,18 @@
         <div class="col-md-9"></div>
       </div>
     </div>
-  </div>
+  </div> -->
   
-  <div>
+  <div class="containerScreenshotGameGb">
+    <img [src]="screenshotGameBg.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'1080p'" class="blurryScreenshotGameGb"/>
+    <div class="container containerScreenshotGameGbColor">
+      <img [src]="game.cover['cloudinary_id'] | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="coverBig"
+        style="height: 100%;" />
+        <img [src]="screenshotGameBg.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'1080p'" />
+      </div>
   </div>
-  <div class="container">
 
+  <div class="container">
     <div class="row">
       <div class="col-md-3" style="padding: 20px 20px 0 20px;">
         <h5>{{game.first_release_date | date:'dd MMMM yyyy'}}</h5>
