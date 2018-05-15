@@ -1,15 +1,19 @@
-<div class="card-columns">
-  <div class="card" *ngFor="let game of games">
-
-    <img class="card-img-top img-responsive" [src]="game | NoPicPipe" alt="{{game.name}}">
-    <!-- <img class="card-img-top img-responsive" *ngIf="game.logo === undefined" src="assets/imgs/noimage.png" alt="{{game.name}}"> -->
-    <div class="card-body">
-      <h5 class="card-title">{{game.name}}</h5>
-      <p class="card-text">{{game.id}}</p>
-      <p class="card-text">{{game.summary}}</p>
-      <a [routerLink]="['/game', game.id]" class="btn btn-outline-info btn-block">See card
-        <i class="fas fa-external-link-alt" style="float: right; margin: 4px;"></i>
-      </a>
+<div class="container mainContainer">
+  <div class="row">
+    <div class="card-columns">
+      <div class="card" *ngFor="let game of games">
+    
+        <img class="card-img-top img-responsive" [src]="game | NoPicPipe" alt="{{game.name}}">
+        <!-- <img class="card-img-top img-responsive" *ngIf="game.logo === undefined" src="assets/imgs/noimage.png" alt="{{game.name}}"> -->
+        <div class="card-body">
+          <h5 class="card-title">{{game.name}}</h5>
+          <p class="card-text">{{game.id}}</p>
+          <p class="card-text">{{game.summary}}</p>
+          <a [routerLink]="['/game', game.id]" class="btn btn-outline-info btn-block">See card
+            <i class="fas fa-external-link-alt" style="float: right; margin: 4px;"></i>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</div>  
