@@ -16,6 +16,10 @@ body {
     letter-spacing: 0.5px;
 } 
 
+.colorBlue {
+    color: #262a40;
+}
+
 /* Center Navbar */
 .navbar-default > .container-fluid {   
     display: flex;
@@ -76,14 +80,14 @@ li.nav-item:last-child {
     height: 340px;
 }
 .containerScreenshotGameGbColor img {
-  position: absolute;
-  top: -9999px;
-  right: -9999px;
-  bottom: -9999px;
-  left: -9999px;
-  margin: auto;
-  min-width: 100%;
-  min-height: 100%;   
+    bottom: -9999px;
+    left: -9999px;
+    margin: auto;
+    min-height: 100%;   
+    min-width: 100%;
+    position: absolute;
+    right: -9999px;
+    top: -9999px;
 }
 
 .screenshotGameGb {
@@ -113,6 +117,13 @@ li.nav-item:last-child {
     margin: 0 20px 20px 20px;
 }
 
+
+/************ PLATFORM LIST ******************/
+
+.platformRow {
+    margin: 0 0 10px 0;
+}
+/************ PLATFORM LIST ******************/
 
 @media screen and (max-width: 768px) {
 

@@ -7,8 +7,10 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class GamesdbService {
 
-  private userKey: string = "ab271182ceddf70bfb465f86e254a211";
-  private urlGameDb: string = "https://api-endpoint.igdb.com/pro";
+  //private userKey: string = "ab271182ceddf70bfb465f86e254a211"; gotham71 original / good
+  private userKey: string = "aab795e53a9b66975d53a672d249c92f"; //gotham_ (gmail) testing
+  
+  private urlGameDb: string = "https://api-endpoint.igdb.com";
   platformsNames: {};
 
   constructor(private http: HttpClient) { }
@@ -24,7 +26,7 @@ export class GamesdbService {
   public getGames() {
 
     let headers = this.getHeaders();
-    let url = `${this.urlGameDb}/games/?limit=200&fields=*&order=name:desc`;
+    let url = `${this.urlGameDb}/pro/games/?limit=200&fields=*&order=name:desc`;
     
     return this.http.get(url, { headers });
   }
@@ -60,9 +62,12 @@ export class GamesdbService {
     return this.http.get(url, { headers });   
   }
 
-  public getPlatforms() {
+  public getPlatforms(platformsArray:any[]) {
+    let platformsArrayTmp: any[] = [];
     let headers = this.getHeaders();
-    let url=`${this.urlGameDb}/platforms/?limit=200&fields=*&order=name:desc`;
+    let platforms = platformsArray.join();
+ 
+    let url = `${this.urlGameDb}/platforms/${platforms}?fields=*&order=name:desc`;
   
     return this.http.get(url, { headers } );
   }
