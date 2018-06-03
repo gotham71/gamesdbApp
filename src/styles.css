@@ -20,6 +20,13 @@ body {
     color: #262a40;
 }
 
+/**** HACKS ****/
+.mW90 {
+    max-width: 90px!important;
+}
+/**** HACKS ****/
+
+
 /* Center Navbar */
 .navbar-default > .container-fluid {   
     display: flex;
