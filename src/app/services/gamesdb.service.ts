@@ -24,7 +24,6 @@ export class GamesdbService {
 
 
   public getGames() {
-
     let headers = this.getHeaders();
     let url = `${this.urlGameDb}/pro/games/?limit=200&fields=*&order=name:desc`;
     
@@ -32,7 +31,6 @@ export class GamesdbService {
   }
 
   public getGame(id: string) {
-    
     let headers = this.getHeaders();
     let url = `${this.urlGameDb}/games/${id}`;
     
@@ -70,5 +68,14 @@ export class GamesdbService {
     let url = `${this.urlGameDb}/platforms/${platforms}?fields=*&order=name:desc`;
   
     return this.http.get(url, { headers } );
+  }
+
+  public getNewGamesOfPlatform(platform: any, limit: any) {
+    let headers = this.getHeaders();
+
+    let url = `${this.urlGameDb}/release_dates/?fields=*&limit=${limit}&filter[platform][eq]=${platform}&order=date:asc&filter[date][gt]=${Date.now()}&expand=game`;
+    console.log('url: ' + url);
+
+    return this.http.get(url, { headers });
   }
 }

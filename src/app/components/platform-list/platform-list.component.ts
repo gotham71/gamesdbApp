@@ -16,10 +16,10 @@ export class PlatformListComponent implements OnInit {
   //platformsArray = [49,48,130,6,12,13,5,4,9,8,7,11,23,4,21,15,26,27];
 
   constructor(private _gamesdbservice: GamesdbService) {
-    this._gamesdbservice.getPlatforms(this.platformsArray).subscribe(response => { this.platforms = response;});
   }
-
+  
   ngOnInit() {
+    this._gamesdbservice.getPlatforms(this.platformsArray).subscribe(response => { this.platforms = response;});
   }
 
 }

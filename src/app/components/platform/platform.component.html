@@ -1,3 +1,8 @@
-<p>
-  platform works!
-</p>
+<div class="container mainContainer">
+  <div class="row" *ngFor="let NewGameOfPlatform of NewGamesOfPlatform">
+     <h1>{{NewGameOfPlatform.game.name}}</h1>
+     <div class="clearfix"></div>
+     <p>{{NewGameOfPlatform.game.summary}}</p>
+     
+  </div>
+</div>

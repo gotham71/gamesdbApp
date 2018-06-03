@@ -128,18 +128,21 @@ li.nav-item:last-child {
 /************ PLATFORM LIST ******************/
 
 .platformRow {
+    background: rgba(204,204,204,0.05);
     border-radius: 8px;
-    padding: 5px;
     cursor: pointer;
+    height: 90px;
+    line-height: 90px;
+    margin-bottom: 10px; 
+    padding: 0 5px;
     transition: all 0.5s ease-in-out;
 }
 .platformRow:hover {
-    padding: 5px;
-    
     background: rgba(204,204,204,0.4);
     border-radius: 8px;
+    margin-bottom: 10px; 
+    padding: 0 5px;
     transition: all 0.25s ease-in-out;
-    
 }
 /************ PLATFORM LIST ******************/
 
@@ -158,6 +161,14 @@ li.nav-item:last-child {
     font-size: 14px;
     letter-spacing: 3px;
     padding: 0;
+}
+
+.mW90 {
+    max-width: 100%!important;
+}
+
+.platformRow {
+    font-size: 14px;
 }
 
 }
