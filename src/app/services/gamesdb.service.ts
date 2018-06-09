@@ -7,8 +7,8 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class GamesdbService {
 
-  //private userKey: string = "ab271182ceddf70bfb465f86e254a211"; gotham71 original / good
-  private userKey: string = "aab795e53a9b66975d53a672d249c92f"; //gotham_ (gmail) testing
+  private userKey: string = "ab271182ceddf70bfb465f86e254a211"; //gotham71 original / good
+  //private userKey: string = "aab795e53a9b66975d53a672d249c92f"; //gotham_ (gmail) testing
   
   private urlGameDb: string = "https://api-endpoint.igdb.com";
   platformsNames: {};
@@ -25,7 +25,7 @@ export class GamesdbService {
 
   public getGames() {
     let headers = this.getHeaders();
-    let url = `${this.urlGameDb}/pro/games/?limit=200&fields=*&order=name:desc`;
+    let url = `${this.urlGameDb}/games/?fields=*&order=name:desc`;
     
     return this.http.get(url, { headers });
   }
@@ -74,8 +74,7 @@ export class GamesdbService {
     let headers = this.getHeaders();
 
     let url = `${this.urlGameDb}/release_dates/?fields=*&limit=${limit}&filter[platform][eq]=${platform}&order=date:asc&filter[date][gt]=${Date.now()}&expand=game`;
-    console.log('url: ' + url);
-
+    
     return this.http.get(url, { headers });
   }
 }

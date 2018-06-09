@@ -1,8 +1,19 @@
 <div class="container mainContainer">
-  <div class="row" *ngFor="let NewGameOfPlatform of NewGamesOfPlatform">
-     <h1>{{NewGameOfPlatform.game.name}}</h1>
-     <div class="clearfix"></div>
-     <p>{{NewGameOfPlatform.game.summary}}</p>
-     
+  <div class="newGameOfPlatform row" *ngFor="let NewGameOfPlatform of NewGamesOfPlatform">
+      <div *ngIf="NewGameOfPlatform.game.cover" class="col-12 col-md-2">
+        
+        <img [src]="NewGameOfPlatform.game.cover.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'thumb'"
+          class="img-fluid" style="border-radius: 8px; margin: 10px 0; " />
+      </div>
+      <div class="col-12 col-md-10 colorBlue">
+        <h2>{{NewGameOfPlatform.game.name}}</h2>
+        <h5>{{NewGameOfPlatform.game.release_dates[0].date | date:"dd-MM-yyyy"}}</h5>
+        <h5>{{NewGameOfPlatform.game.summary}}</h5>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12 col-md-4" *ngFor="let screenshot of NewGameOfPlatform.game.screenshots, let i = index">
+            <img [src]="screenshot.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" (click)="openLightBox(screenshot.cloudinary_id)" *ngIf="i<3" class="img-fluid screenshotPlatformGame" />
+        </div>
+      </div>
   </div>
 </div>

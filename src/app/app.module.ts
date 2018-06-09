@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { LightboxModule } from "ngx-lightbox";
 
 //Services
 import { GamesdbService } from './services/gamesdb.service';
@@ -39,6 +40,7 @@ import { PlatformComponent } from './components/platform/platform.component';
     BrowserModule,
     HttpModule,
     HttpClientModule,
+    LightboxModule,
     APP_ROUTING
   ],
   providers: [
