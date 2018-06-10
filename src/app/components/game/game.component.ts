@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Lightbox } from 'ngx-lightbox';
 
 //Service
 import { GamesdbService } from '../../services/gamesdb.service';
@@ -11,6 +12,8 @@ import { GamesdbService } from '../../services/gamesdb.service';
   styles: []
 })
 export class GameComponent implements OnInit {
+  
+  private _albums: any[] = []; //lightbox
 
   game: any = {};
   screenshotsGame: any[] = [];
@@ -18,7 +21,7 @@ export class GameComponent implements OnInit {
   platformsGame: any[] = [];
   platformsNameGame: any[] = [];
 
-  constructor(public _gameDbService: GamesdbService, public activatedRoute: ActivatedRoute) {}
+  constructor(public _gameDbService: GamesdbService, public activatedRoute: ActivatedRoute, private _lightbox: Lightbox) {}
   
   ngOnInit() {
     this.activatedRoute.params.subscribe(parameters => {
@@ -39,6 +42,22 @@ export class GameComponent implements OnInit {
         });
 
       })
+  }
+
+  openLightBox(cloudinary_id: string): void {
+    // open lightbox
+
+    this._albums = [];
+    const src = 'https://images.igdb.com/igdb/image/upload/t_720p/' + cloudinary_id;
+    const caption = '-';
+    const thumb = '-';
+    const album = {
+      src: src,
+      caption: caption,
+      thumb: thumb
+    };
+    this._albums.push(album);
+    this._lightbox.open(this._albums, 0);
   }
 
 }

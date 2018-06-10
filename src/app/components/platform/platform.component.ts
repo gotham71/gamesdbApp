@@ -4,10 +4,6 @@ import { Lightbox } from 'ngx-lightbox';
 
 //Service
 import { GamesdbService } from '../../services/gamesdb.service';
-import { PARAMETERS } from '@angular/core/src/util/decorators';
-
-
-
 
 @Component({
   selector: 'app-platform',
@@ -18,6 +14,7 @@ export class PlatformComponent implements OnInit {
 
   private _albums: any[] = []; //lightbox
 
+  platform: any;
   NewGamesOfPlatform: any[] = [];
   screenshotsGame: any[] = [];
 
@@ -27,8 +24,13 @@ export class PlatformComponent implements OnInit {
     this.activatedRoute.params.subscribe(parameters => {
       this._gamedbservice.getNewGamesOfPlatform(parameters['id'], 5).map((response: any) => response).subscribe(response => { 
         this.NewGamesOfPlatform = response; 
-      
         console.log(response); 
+        this._gamedbservice.getPlatform(parameters['id']).subscribe(platform => {
+          this.platform = platform[0].name;
+          console.log(this.platform);
+        }
+        
+      
       })
     });
   }

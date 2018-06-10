@@ -1,12 +1,14 @@
 <div class="container mainContainer">
+  <div class="titleGameOfPlatform">
+    <h2>{{ platform }}</h2>
+  </div>
   <div class="newGameOfPlatform row" *ngFor="let NewGameOfPlatform of NewGamesOfPlatform">
       <div *ngIf="NewGameOfPlatform.game.cover" class="col-12 col-md-2">
-        
-        <img [src]="NewGameOfPlatform.game.cover.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'thumb'"
-          class="img-fluid" style="border-radius: 8px; margin: 10px 0; " />
+        <img [routerLink]="['/game', NewGameOfPlatform.game.id]" [src]="NewGameOfPlatform.game.cover.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'cover_big'"
+          class="img-fluid linkImgNoDefaultStyle" style="border-radius: 8px; margin: 5px 0; " />
       </div>
       <div class="col-12 col-md-10 colorBlue">
-        <h2>{{NewGameOfPlatform.game.name}}</h2>
+        <h2><a class="linkTextNoDefaultStyle" [routerLink]="['/game', NewGameOfPlatform.game.id]">{{NewGameOfPlatform.game.name}}</a></h2>
         <h5>{{NewGameOfPlatform.game.release_dates[0].date | date:"dd-MM-yyyy"}}</h5>
         <h5>{{NewGameOfPlatform.game.summary}}</h5>
       </div>

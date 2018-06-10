@@ -159,10 +159,21 @@ li.nav-item:last-child {
     transition: all 0.15s ease-in-out;
 }
 .screenshotPlatformGame:hover{
-    border-radius: 18px; 
+    border-radius: 20px; 
     cursor: pointer;
-    padding: 15px 15px 10px 15px;
+    padding: 8px 10px 10px 10px;
     transition: all 0.3s ease-in-out;
+}
+.linkTextNoDefaultStyle {
+    color: #262a40;
+    cursor: pointer;
+    text-decoration: none!important;
+}
+.linkImgNoDefaultStyle{
+    border: 0!important;
+    cursor: pointer;
+    outline: 0!important;
+    text-decoration: none!important;
 }
 
 /************ PLATFORM GAMES ******************/
@@ -184,12 +195,11 @@ li.nav-item:last-child {
     padding: 0;
 }
 
-.mW90 {
-    max-width: 100%!important;
-}
+.mW90 { max-width: 100%!important; }
+.platformRow { font-size: 14px; }
 
-.platformRow {
-    font-size: 14px;
+h5 {
+    font-size: 1rem!important;
 }
 
 }

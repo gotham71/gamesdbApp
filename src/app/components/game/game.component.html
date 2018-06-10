@@ -20,9 +20,9 @@
           <img *ngIf="game.cover" [src]="game.cover['cloudinary_id'] | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="coverSmall rounded-circle" style="display: inline-block;">
           <h1 style="display: inline-block;" *ngIf="game.name">{{game.name}}</h1>    
           <p>{{game.summary}}</p>
-          <!-- <div *ngFor="let screenshot of screenshotsGame">
-            <img [src]="screenshot.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'1080p'" class="img-fluid" style="border-radius: 8px; margin: 10px 0;"/>
-          </div> -->
+          <div *ngFor="let screenshot of screenshotsGame">
+            <img (click)="openLightBox(screenshot.cloudinary_id)" [src]="screenshot.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="img-fluid" style="border-radius: 8px; margin: 10px 0;"/>
+          </div>
       </div>
     </div>
       
