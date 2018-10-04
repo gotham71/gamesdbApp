@@ -9,7 +9,9 @@ export class GamesdbService {
 
   //private userKey: string = "ab271182ceddf70bfb465f86e254a211"; //gotham71 original / good
   //private userKey: string = "aab795e53a9b66975d53a672d249c92f"; //gotham_ (gmail) testing
-  private userKey: string = "12e9be8f04185ff63bff62ca8b56504a"; //igdbjmrb1  testing
+  //private userKey: string = "12e9be8f04185ff63bff62ca8b56504a"; //igdbjmrb1  testing
+  //private userKey: string = "f2dbbea0a5e607fd77f258580e052c68"; //igdbjmrb2  testing
+  private userKey: string = "d99a3c3c862eb727e6e84c1167f0ca37"; //igdbjmrb3  testing
   
   
   private urlGameDb: string = "https://api-endpoint.igdb.com";
@@ -61,29 +63,45 @@ export class GamesdbService {
   }
 
   public getPlatformsNameGame(platformsIdArray:string[]) {
-    let platformsNameArray:string[] = [];
     let headers = this.getHeaders();
     let platforms = platformsIdArray.join();
+    console.log('platforms: ' + platforms);
+
     let url = `${this.urlGameDb}/platforms/${platforms}?fields=name&order=id:desc`;
 
     return this.http.get(url, { headers });   
   }
 
   public getPlatforms(platformsArray:any[]) {
-    let platformsArrayTmp: any[] = [];
     let headers = this.getHeaders();
     let platforms = platformsArray.join();
- 
+  
     let url = `${this.urlGameDb}/platforms/${platforms}?fields=*&order=name:desc`;
   
     return this.http.get(url, { headers } );
   }
 
-  public getNewGamesOfPlatform(platform: any, limit: any) {
+  public getNewGamesOfPlatform(platform: any, limit: number) {
     let headers = this.getHeaders();
 
     let url = `${this.urlGameDb}/release_dates/?fields=*&limit=${limit}&filter[platform][eq]=${platform}&order=date:asc&filter[date][gt]=${Date.now()}&expand=game`;
     
+    return this.http.get(url, { headers });
+  }
+
+  public getGamesRandomlyOfPlatform(platform: any, id: string) {
+    let headers = this.getHeaders();
+    
+    let url = `${this.urlGameDb}/games/${id}?filter[release_dates.platform][eq]=${platform}`;
+
+    return this.http.get(url, { headers });
+  }
+
+  public searchGame(searchTerm: string) {
+    let headers = this.getHeaders();
+
+    let url = `${this.urlGameDb}/games/?search=${searchTerm}&fields=name&limit=5`;
+
     return this.http.get(url, { headers });
   }
 }

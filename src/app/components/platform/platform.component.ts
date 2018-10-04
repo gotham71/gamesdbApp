@@ -28,9 +28,7 @@ export class PlatformComponent implements OnInit {
         this._gamedbservice.getPlatform(parameters['id']).subscribe(platform => {
           this.platform = platform[0].name;
           console.log(this.platform);
-        }
-        
-      
+        })
       })
     });
   }
