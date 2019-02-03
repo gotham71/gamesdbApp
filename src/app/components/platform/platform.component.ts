@@ -37,7 +37,7 @@ export class PlatformComponent implements OnInit {
     // open lightbox
     
     this._albums = [];
-    const src = 'https://images.igdb.com/igdb/image/upload/t_720p/' + cloudinary_id;
+    const src = 'https://images.igdb.com/igdb/image/upload/t_720p/' + cloudinary_id + '.jpg';
     const caption = '-';
     const thumb = '-';
        const album = {
