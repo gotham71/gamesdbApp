@@ -7,6 +7,18 @@
     padding: 0;
 }
 
+*:focus {
+    outline: none!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+}
+
+input:focus {
+    outline: 0;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+}
+
 body {
     /* font-family: 'Montserrat', sans-serif!important; */
     /* font-family: 'Open Sans', sans-serif!important; */

@@ -18,13 +18,15 @@
       </div>
       <div class="col-md-9" style="padding: 20px 15px 0 15px;">
           <img *ngIf="game.cover" [src]="game.cover['cloudinary_id'] | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'thumb'" class="coverSmall rounded-circle" style="display: inline-block;">
-          <h1 style="display: inline-block;" *ngIf="game.name">{{game.name}}</h1>    
+          <h1 style="display: inline-block;" *ngIf="game.name">{{game.name}}</h1>
           <h5>{{game.summary}}</h5>
           <div class="container p-0">
             <div class="row">
               <div class="col-12 col-sm-6 col-md-4" *ngFor="let screenshot of screenshotsGame">
-                <img (click)="openLightBox(screenshot.cloudinary_id)" [src]="screenshot.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="img-fluid screenshotPlatformGame"/>
-              </div>   
+                <!-- <img (click)="openLightBox(screenshot.cloudinary_id)" [src]="screenshot.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="img-fluid screenshotPlatformGame"/> -->
+                <img [src]="screenshot.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="img-fluid screenshotPlatformGame"/>
+
+              </div>
             </div>
           </div>
       </div>

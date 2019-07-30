@@ -1,18 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+//import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { LightboxModule } from "ngx-lightbox";
+//import { LightboxModule } from "ngx-lightbox";
 
-//Services
+// Services
 import { GamesdbService } from './services/gamesdb.service';
 
-//Pipes
+// Pipes
 import { NoPicPipe } from './pipes/nopic.pipe';
 import { DomseguroPipe } from './pipes/domseguro.pipe';
 
 
-//Routes
+// Routes
 import { APP_ROUTING } from './app.routes';
 
 import { AppComponent } from './app.component';
@@ -38,9 +38,9 @@ import { PlatformComponent } from './components/platform/platform.component';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    //HttpModule,
     HttpClientModule,
-    LightboxModule,
+    //LightboxModule,
     APP_ROUTING
   ],
   providers: [

@@ -1,10 +1,50 @@
 <div class="row">
   <div class="col-4"></div>  
   <div class="col-3 no-gutters pr-0">
-    <input #searchGameInput type="search" class="form-control border-secondary border-right-0 rounded-0" placeholder="Search game" (keyup.enter)="searchGame(searchGameInput.value)"/>
+    <div class="searchGameHomeWrapper">
+      <input #searchGameInput type="search"class="form-control border-secondary searchGameHome" placeholder="Search game" (keyup.enter)="gamesWithCover = []; searchGame(searchGameInput.value);"/>
+      <label for="searchGameHome" class="fa fa-search input-icon"></label>
+    </div>
   </div>
-  <div class="col-1 no-gutters pl-0">
-    <button class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"><i class="fa fa-search"></i></button>
+  <div class="col-1 no-gutters pr-0">
+    <div class="searchGameHomeWrapper">
+      <select class="form-control border-secondary searchGameHome">
+        <option value="6">PC</option>
+        <option value="49">Xbox One</option>
+        <option value="48">Playstation 4</option>
+        <option value="130">Nintendo Switch</option>
+        <option value="13">PC / DOS</option>
+        <option value="26">ZX Spectrum</option>
+        <option value="15">Commodore 64</option>
+        <option value="27">MSX</option>
+      </select>
+        <!-- <input #searchGameInput type="search" id="searchGameHome" class="form-control border-secondary" placeholder="Search game" (keyup.enter)="gamesWithCover = []; searchGame(searchGameInput.value);"/>
+        <label for="searchGameHome" class="fa fa-search input-icon"></label> -->
+    </div>
   </div>
+  <!-- <div class="col-1 no-gutters pl-0">
+     <button class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right" (click)="searchGame(searchGameInput.value)"><i class="fa fa-search"></i></button>
+  </div> -->
   <div class="col-4"></div>
+</div>
+<div class="row">
+  <div class="col-2"></div>
+    <div #searchGamesResults class="col-8">
+      <div *ngFor="let gameFound of gamesWithCover">
+        <a [routerLink]="['/game', gameFound.id]">
+          <div class="container">
+            <div class="gameFoundHome row">
+              <div class="col-sm-11 col-md-9">
+                  <h5>{{ gameFound.name }}</h5>
+              </div>
+              <div class="col-md-1">{{ gameFound.platform }}</div>              
+              <div class="col-sm-12 col-md-2 text-center">
+                  <img *ngIf="gameFound.cover" [src]="gameFound['cloudinary_id'] | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="rounded img-fluid" style="display: inline-block; width: 144px;">
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  <div class="col-2"></div>
 </div>

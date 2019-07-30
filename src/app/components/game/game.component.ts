@@ -12,7 +12,7 @@ import { GamesdbService } from '../../services/gamesdb.service';
   styles: []
 })
 export class GameComponent implements OnInit {
-  
+
   private _albums: any[] = []; //lightbox
 
   game: any = {};
@@ -22,15 +22,15 @@ export class GameComponent implements OnInit {
   platformsNameGame: any[] = [];
 
   constructor(public _gameDbService: GamesdbService, public activatedRoute: ActivatedRoute, private _lightbox: Lightbox) {}
-  
+
   ngOnInit() {
     this.activatedRoute.params.subscribe(parameters => {
         this._gameDbService.getGame(parameters['id']).subscribe(response => { this.game = response[0]; console.log(response[0]); })
-  
+
         this._gameDbService.getScreenshotsGame(parameters['id']).map( (response: any) => response[0].screenshots).subscribe( screenshotsGame => {
           this.screenshotsGame = screenshotsGame;
           let randomBgNumber: number;
-          
+
           if (this.screenshotsGame) {
             randomBgNumber = Math.floor(Math.random() * this.screenshotsGame.length);
             this.screenshotGameBg = screenshotsGame[randomBgNumber];
@@ -39,10 +39,10 @@ export class GameComponent implements OnInit {
 
         this._gameDbService.getPlatformsIdGame(parameters['id']).map( (response: any) => response[0].platforms).subscribe( platformsGame => {
           if (platformsGame) {
-            this.platformsGame = platformsGame; 
+            this.platformsGame = platformsGame;
             this._gameDbService.getPlatformsNameGame(this.platformsGame).map((response: any) => response).subscribe(platformsNameGame => {
-              this.platformsNameGame = platformsNameGame; 
-            }); 
+              this.platformsNameGame = platformsNameGame;
+            });
           }
         });
 
