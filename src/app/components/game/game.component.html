@@ -1,31 +1,29 @@
   <div class="containerScreenshotGameGb">
-    <img *ngIf="screenshotGameBg" [src]="screenshotGameBg.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'1080p'" class="blurryScreenshotGameGb"/>
+    <img *ngIf="screenshotGameBg" [src]="screenshotGameBg.image_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'1080p'" class="blurryScreenshotGameGb"/>
     <div class="container containerScreenshotGameGbColor">
-      <img  *ngIf="game.cover" [src]="game.cover['cloudinary_id'] | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'cover_med'" class="coverBig"
+      <img  *ngIf="coverGame" [src]="coverGame | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'cover_med'" class="coverBig"
         style="height: 100%;" />
-        <img *ngIf="screenshotGameBg" [src]="screenshotGameBg.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'1080p'" />
+        <img *ngIf="screenshotGameBg" [src]="screenshotGameBg.image_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'1080p'" />
       </div>
   </div>
 
   <div class="container">
     <div class="row">
       <div class="col-md-3" style="padding: 20px 20px 0 20px;">
-        <h5 *ngIf="game.first_release_date">{{game.first_release_date | date:'dd MMMM yyyy'}}</h5>
+        <h5 *ngIf="game.first_release_date">{{game.first_release_date * 1000| date:'dd MMMM yyyy'}}</h5>
         <hr>
         <div *ngFor="let platform of platformsNameGame">
           <h6 *ngIf="platform.name">{{platform.name}}</h6>
         </div>
       </div>
       <div class="col-md-9" style="padding: 20px 15px 0 15px;">
-          <img *ngIf="game.cover" [src]="game.cover['cloudinary_id'] | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'thumb'" class="coverSmall rounded-circle" style="display: inline-block;">
+          <img *ngIf="coverGame" [src]="coverGame | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'thumb'" class="coverSmall rounded-circle" style="display: inline-block;">
           <h1 style="display: inline-block;" *ngIf="game.name">{{game.name}}</h1>
           <h5>{{game.summary}}</h5>
           <div class="container p-0">
             <div class="row">
               <div class="col-12 col-sm-6 col-md-4" *ngFor="let screenshot of screenshotsGame">
-                <!-- <img (click)="openLightBox(screenshot.cloudinary_id)" [src]="screenshot.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="img-fluid screenshotPlatformGame"/> -->
-                <img [src]="screenshot.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="img-fluid screenshotPlatformGame"/>
-
+                <img (click)="openLightBox(screenshot.image_id)" [src]="screenshot.image_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="img-fluid screenshotPlatformGame"/>
               </div>
             </div>
           </div>

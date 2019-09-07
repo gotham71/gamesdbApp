@@ -22,26 +22,28 @@ export class HomeComponent implements OnInit {
   searchGame(searchTerm: string) {
     this._gamesdbservice.searchGame(searchTerm).subscribe( response => {
       this.gamesFound = response;
+      console.log(this.gamesFound);
       this.gamesFound.forEach(game =>{
-        // this._gamesdbservice.getCoverGame(game.id).map((response: any) => response).subscribe(cover => {
-        //   this.pic = cover;
-        //   this.pic.forEach(pic => {
-        //     if (typeof pic.cover === "undefined"){
-        //       console.log('the property is not available...'); // print into console
-        //     } else {
-        //       if (pic.cover.cloudinary_id !== "undefined" && pic.cover.url !== "undefined") {
-        //         console.log('cover: ' + pic.cover.cloudinary_id);
-        //         var platformTmp;
-        //         this._gamesdbservice.getPlatformsIdGame(game.id).subscribe( platform => {
-        //           console.log("platform['platforms']: ");
-        //           console.log(platform[0].platforms[0]);
-        //           platformTmp = platform[0].platforms[0];
-        //           this.gamesWithCover.push({id: game.id, name: game.name, platform: platformTmp, cover: pic.cover.url, cloudinary_id: pic.cover.cloudinary_id});
-        //         });
-        //       }
-        //     }
-        //   });
-        // });
+        this._gamesdbservice.getCoverGame(game.cover).map((response: any) => response).subscribe(cover => {
+          this.pic = cover;
+          console.log(this.pic);
+          this.pic.forEach(pic => {
+            if (typeof pic.image_id === "undefined"){
+              console.log('the property is not available...'); // print into console
+            } else {
+              if (pic.image_id !== "undefined" && pic.url !== "undefined") {
+                console.log('cover: ' + pic.image_id);
+                var platformTmp;
+                this._gamesdbservice.getPlatformsIdGame(game.id).subscribe( platform => {
+                  console.log("platform['platforms']: ");
+                  console.log(platform[0].platforms);
+                  platformTmp = platform[0].platforms;
+                  this.gamesWithCover.push({id: game.id, name: game.name, platform: platformTmp, cover: pic.url, image_id: pic.image_id});
+                });
+              }
+            }
+          });
+        });
       });
     })
   }

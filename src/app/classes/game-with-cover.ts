@@ -3,6 +3,6 @@ export class GameWithCover {
         public id: number,
         public name: string,
         public platform: number,
-        public cloudinary_id: string,
+        public image_id: string,
         public cover: string) {}
 }

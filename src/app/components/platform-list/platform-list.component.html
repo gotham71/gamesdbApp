@@ -4,10 +4,11 @@
       <img [ngClass]="{'mW90': platform}" [src]="platform | NoPicPipe" alt="{{platform.slug}}" class="img-fluid">
     </div>
     <div class="col-5 col-sm-5">
+      {{platform | json}}
       {{platform.name}}
     </div>
     <div class="col-5 col-sm-5">
-      <span style="position: absolute; right: 70px;">{{platform.games.length}} Games</span>
+      <span style="position: absolute; right: 70px;"  *ngIf="platform.games">{{platform.games.length}} Games</span>
     </div>
  </div>
 </div>

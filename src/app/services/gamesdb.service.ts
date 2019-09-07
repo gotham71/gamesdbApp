@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/Rx'; //Map
 import { Observable } from 'rxjs/Rx';
 
@@ -23,7 +23,9 @@ export class GamesdbService {
 
   public getHeaders() {
     let headers = new HttpHeaders({
-      'user-key': this.userKey
+      'user-key': this.userKey,
+      'Accept': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     });
     return headers;
   }
@@ -31,47 +33,90 @@ export class GamesdbService {
 
   public getGames() {
     let headers = this.getHeaders();
-    let url = `${this.urlGameDb}/games/?fields=*&order=name:desc`;
+    let searchTerm: string = 'Tomb Raider';
 
-    return this.http.get(url, { headers });
+    let fromObject = {
+      search: searchTerm,
+      fields: '*',
+      limit: '5'
+    }
+
+    let httpParams = new HttpParams({ fromObject });
+
+    let url = `${this.urlGameDb}/games`;
+
+    return this.http.get(url, {headers, params: httpParams});
   }
 
   public getGame(id: string) {
     let headers = this.getHeaders();
+    let fromObject = {
+      fields: '*'
+    }
+    let httpParams = new HttpParams({ fromObject });
     let url = `${this.urlGameDb}/games/${id}`;
 
-    return this.http.get(url, { headers });
+    return this.http.get(url, { headers: headers, params: httpParams });
   }
 
-  public getScreenshotsGame(id: string) {
+  public getScreenshotsGame(screenshotsArray:string[]) {
     let headers = this.getHeaders();
-    let url = `${this.urlGameDb}/games/${id}/?fields=screenshots`;
+    screenshotsArray =screenshotsArray.slice(0,5);
+    let screenshots = screenshotsArray.join();
+    let fromObject = {
+      fields: '*'
+    }
+    let httpParams = new HttpParams({ fromObject });
 
-    return this.http.get(url, { headers });
+    let url = `${this.urlGameDb}/screenshots/${screenshots}`;
+
+    return this.http.get(url, { headers: headers, params: httpParams });
+  }
+
+  public getCoverGame(coverID:number) {
+    let headers = this.getHeaders();
+    let fromObject = {
+      fields: '*'
+    }
+    let httpParams = new HttpParams({ fromObject });
+    let url = `${this.urlGameDb}/covers/${coverID}`;
+
+    return this.http.get(url, { headers: headers, params: httpParams });
   }
 
   public getPlatformsIdGame(id: string) {
     let headers = this.getHeaders();
-    let url = `${this.urlGameDb}/games/${id}/?fields=platforms`;
+    let fromObject = {
+      fields: 'platforms'
+    }
+    let httpParams = new HttpParams({ fromObject });
+    let url = `${this.urlGameDb}/games/${id}`;
 
-    return this.http.get(url, { headers });
+    return this.http.get(url, { headers: headers, params: httpParams });
   }
 
-  public getPlatform(platformId: string) {
+  public getPlatform(platformId: number) {
     let headers = this.getHeaders();
+    let fromObject = {
+      fields: '*'
+    }
+    let httpParams = new HttpParams({ fromObject });
     let url = `${this.urlGameDb}/platforms/${platformId}`;
 
-    return this.http.get(url, { headers });
+    return this.http.get(url, { headers: headers, params: httpParams });
   }
 
   public getPlatformsNameGame(platformsIdArray:string[]) {
     let headers = this.getHeaders();
     let platforms = platformsIdArray.join();
-    console.log('platforms: ' + platforms);
+    let fromObject = {
+      fields: 'name',
+      limit: '50'
+    }
+    let url = `${this.urlGameDb}/platforms/${platforms}`;
+    let params = new HttpParams({fromObject});
 
-    let url = `${this.urlGameDb}/platforms/${platforms}?fields=name&order=id:desc`;
-
-    return this.http.get(url, { headers });
+    return this.http.get(url, { headers, params: params });
   }
 
   public getPlatforms(platformsArray:any[]) {
@@ -102,8 +147,15 @@ export class GamesdbService {
   public searchGame(searchTerm: string) {
     let headers = this.getHeaders();
 
-    let url = `${this.urlGameDb}/games/?search=${searchTerm}&fields=name&limit=5`;
+    let url = `${this.urlGameDb}/games`;
+    let fromObject = {
+      search: searchTerm,
+      fields: '*',
+      limit: '50'
+    }
 
-    return this.http.get(url, { headers });
+    let params = new HttpParams({fromObject});
+    return this.http.get(url, { headers, params: params });
+
   }
 }

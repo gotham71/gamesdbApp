@@ -2,7 +2,6 @@
   <div class="row">
     <div class="card-columns">
       <div class="card" *ngFor="let game of games">
-    
         <img class="card-img-top img-responsive" [src]="game | NoPicPipe" alt="{{game.name}}">
         <!-- <img class="card-img-top img-responsive" *ngIf="game.logo === undefined" src="assets/imgs/noimage.png" alt="{{game.name}}"> -->
         <div class="card-body">
@@ -16,4 +15,4 @@
       </div>
     </div>
   </div>
-</div>  
+</div>

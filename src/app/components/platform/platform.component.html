@@ -4,7 +4,7 @@
   </div>
   <div class="newGameOfPlatform row" *ngFor="let NewGameOfPlatform of NewGamesOfPlatform">
       <div *ngIf="NewGameOfPlatform.game.cover" class="col-12 col-md-2">
-        <img [routerLink]="['/game', NewGameOfPlatform.game.id]" [src]="NewGameOfPlatform.game.cover.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'cover_big'"
+        <img [routerLink]="['/game', NewGameOfPlatform.game.id]" [src]="NewGameOfPlatform.game.cover.image_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'cover_big'"
           class="img-fluid linkImgNoDefaultStyle" style="border-radius: 8px; margin: 5px 0; " />
       </div>
       <div class="col-12 col-md-10 colorBlue">
@@ -14,8 +14,8 @@
       </div>
       <div class="row mt-4">
         <div class="col-12 col-md-4" *ngFor="let screenshot of NewGameOfPlatform.game.screenshots, let i = index">
-            <!-- <img [src]="screenshot.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" (click)="openLightBox(screenshot.cloudinary_id)" *ngIf="i<3" class="img-fluid screenshotPlatformGame" /> -->
-            <img [src]="screenshot.cloudinary_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" *ngIf="i<3" class="img-fluid screenshotPlatformGame" />
+            <!-- <img [src]="screenshot.image_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" (click)="openLightBox(screenshot.image_id)" *ngIf="i<3" class="img-fluid screenshotPlatformGame" /> -->
+            <img [src]="screenshot.image_id | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" *ngIf="i<3" class="img-fluid screenshotPlatformGame" />
         </div>
       </div>
   </div>

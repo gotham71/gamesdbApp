@@ -10,7 +10,7 @@ export class DomseguroPipe implements PipeTransform {
   constructor( private domSanitizer:DomSanitizer ){ }
 
   transform(value: string, url: string, size: string = '1080p'): any {
-    
+
     return this.domSanitizer.bypassSecurityTrustResourceUrl( url + size + '/' + value + '.jpg' );
   }
 

@@ -10,13 +10,13 @@ export class GameListComponent implements OnInit {
 
   games: any;
 
-  constructor(private _gamesdbservice: GamesdbService) { 
+  constructor(private _gamesdbservice: GamesdbService) {
     this._gamesdbservice.getGames().subscribe(response => { this.games = response; console.log(response); });
   }
 
   ngOnInit() {
-    
+
   }
-  
+
 
 }

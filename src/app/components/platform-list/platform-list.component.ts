@@ -17,9 +17,9 @@ export class PlatformListComponent implements OnInit {
 
   constructor(private _gamesdbservice: GamesdbService) {
   }
-  
+
   ngOnInit() {
-    this._gamesdbservice.getPlatforms(this.platformsArray).subscribe(response => { this.platforms = response;});
+    this._gamesdbservice.getPlatforms(this.platformsArray).subscribe(response => { this.platforms = response; console.log(this.platforms)});
   }
 
 }

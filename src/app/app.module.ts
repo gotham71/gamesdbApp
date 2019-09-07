@@ -2,7 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 //import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-//import { LightboxModule } from "ngx-lightbox";
+import { LightboxModule } from 'ngx-lightbox';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+// FontAwesomeIcons
+import { faCloud, faCamera, faUser, faStar, faSearch} from '@fortawesome/free-solid-svg-icons';
 
 // Services
 import { GamesdbService } from './services/gamesdb.service';
@@ -40,7 +44,8 @@ import { PlatformComponent } from './components/platform/platform.component';
     BrowserModule,
     //HttpModule,
     HttpClientModule,
-    //LightboxModule,
+    LightboxModule,
+    FontAwesomeModule,
     APP_ROUTING
   ],
   providers: [
@@ -48,4 +53,8 @@ import { PlatformComponent } from './components/platform/platform.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faCloud, faCamera, faUser, faStar, faSearch);
+  }
+}

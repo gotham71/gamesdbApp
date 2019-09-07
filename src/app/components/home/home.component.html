@@ -1,9 +1,11 @@
 <div class="row">
-  <div class="col-4"></div>  
+  <div class="col-4"></div>
   <div class="col-3 no-gutters pr-0">
     <div class="searchGameHomeWrapper">
       <input #searchGameInput type="search"class="form-control border-secondary searchGameHome" placeholder="Search game" (keyup.enter)="gamesWithCover = []; searchGame(searchGameInput.value);"/>
-      <label for="searchGameHome" class="fa fa-search input-icon"></label>
+      <label for="searchGameHome">
+        <fa-icon icon="search"></fa-icon>
+      </label>
     </div>
   </div>
   <div class="col-1 no-gutters pr-0">
@@ -37,9 +39,9 @@
               <div class="col-sm-11 col-md-9">
                   <h5>{{ gameFound.name }}</h5>
               </div>
-              <div class="col-md-1">{{ gameFound.platform }}</div>              
+              <div class="col-md-1">{{ gameFound.platform }}</div>
               <div class="col-sm-12 col-md-2 text-center">
-                  <img *ngIf="gameFound.cover" [src]="gameFound['cloudinary_id'] | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="rounded img-fluid" style="display: inline-block; width: 144px;">
+                  <img  [src]="gameFound['image_id'] | domseguro: 'https://images.igdb.com/igdb/image/upload/t_':'720p'" class="rounded img-fluid" style="display: inline-block; width: 144px;">
               </div>
             </div>
           </div>
